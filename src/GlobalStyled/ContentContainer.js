@@ -6,7 +6,7 @@ const ContentContainer = styled.section `
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 6%;
 
 `
 

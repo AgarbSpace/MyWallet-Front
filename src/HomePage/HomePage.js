@@ -1,8 +1,8 @@
-import Container from "./Styleds/Container";
+import Container from "../GlobalStyled/Container";
 import Content from "./Styleds/Content";
-import ContentContainer from "./Styleds/ContentContainer";
+import ContentContainer from "../GlobalStyled/ContentContainer";
 import Footer from "./Styleds/Footer";
-import Header from "./Styleds/Header";
+import Header from "../GlobalStyled/Header";
 
 
 export default function HomePage(){
