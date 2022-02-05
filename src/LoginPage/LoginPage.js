@@ -22,7 +22,7 @@ export default function LoginPage(){
     function login(e){
         e.preventDefault()
 
-        const promisse = axios.post("http://localhost:5000/login",{
+        const promisse = axios.post("http://localhost:5000/",{
             ...loginForm
         })
 
@@ -31,7 +31,7 @@ export default function LoginPage(){
             setButtonStatus("")
             setToken(response.data)
             localStorage.setItem('token', JSON.stringify(response.data));
-            navigate('/')
+            navigate('/home')
         })
 
         promisse.catch(error => {

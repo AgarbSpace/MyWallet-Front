@@ -7,27 +7,37 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useToken } from "../provider/auth";
 import { useNavigate } from "react-router-dom";
+import MovimentationContainer from "./Styleds/MovimentationContainer";
+import Details from "./Styleds/Details";
+import DayAndDescription from "./Styleds/DayAndDescription";
+import Day from "./Styleds/Day";
+import NoContent from "./Styleds/NoContent";
+import Description from "./Styleds/Description";
+import Value from "./Styleds/Value";
+import FooterContent from "./Styleds/FooterContent";
+import Balance from "./Styleds/Balance";
+import Debt from "./Styleds/Debt";
 
 
 export default function HomePage(){
 
-    const [deposits, setDeposits] = useState();
-    const [retreats, setRetreats] = useState();
+    const [movimentation, setMovimentation] = useState();
     const [user, setUser] = useState();
     const navigate = useNavigate();
     const {token} = useToken()
+    let balance = 0;
+    
 
     useEffect(async () =>{
 
-        const promisse = axios.get("http://localhost:5000/", {
+        const promisse = axios.get("http://localhost:5000/home", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         })
     
         promisse.then((response) => {
-            setDeposits(response.data.deposits);
-            setRetreats(response.data.retreats);
+            setMovimentation(response.data.movimentations);
             setUser(response.data.name)
         });
         promisse.catch((error) => console.log(error));
@@ -35,16 +45,16 @@ export default function HomePage(){
 
     }, [])
 
-    if(!deposits){
+    if(!movimentation){
         return(
             <Container>
                 <ContentContainer>
                     <Header>
                         <h1>Olá, {user}</h1>
-                        <ion-icon name="exit-outline"></ion-icon>
+                        <button><ion-icon name="exit-outline" onClick = {() => navigate("/")}></ion-icon></button>
                     </Header>
                     <Content>
-                        <span>Não há registros de entrada ou saída</span>
+                        <NoContent>Não há registros de entrada ou saída</NoContent>
                     </Content>
                     <Footer>
                         <button onClick={() => navigate("/deposit")}>
@@ -61,20 +71,42 @@ export default function HomePage(){
         )
     }
 
+    
+
     return(
         <Container>
             <ContentContainer>
                 <Header>
                     <h1>Olá, {user}</h1>
-                    <ion-icon name="exit-outline"></ion-icon>
+                    <button><ion-icon name="exit-outline" onClick = {() => navigate("/")}></ion-icon></button>
                 </Header>
                 <Content>
-                    <div className = "movimentationContainer">
-                        <div >
-                            <div></div>
-                            <span className = "value"></span>
-                        </div>
-                    </div>
+                    <MovimentationContainer>
+                        {movimentation.map((infos) =>{
+
+                            if(infos.type === "deposit"){
+                                balance += parseInt(infos.value)
+                            }else{
+                                balance -= parseInt(infos.value)
+                            }
+
+                            return(
+                                <Details>
+                                    <DayAndDescription>
+                                        <Day>{infos.day}</Day>
+                                        <Description>{infos.description}</Description>
+                                    </DayAndDescription>
+                                    {infos.type === 'deposit' ? <Value type = "deposit">{infos.value}</Value> : <Value>{infos.value}</Value>}
+                                </Details>
+                            )
+                        })}
+                    </MovimentationContainer>
+                    <FooterContent>
+                        <Details>
+                            <Balance>SALDO</Balance>
+                            <Debt debt = {balance}>{balance}</Debt>
+                        </Details>
+                    </FooterContent>
                 </Content>
                 <Footer>
                     <button onClick={() => navigate("/deposit")}>

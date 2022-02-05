@@ -28,6 +28,19 @@ const Header = styled.header `
         color: #FFFFFF;
     }
 
+    button{
+        background-color: inherit;
+        border: none
+    }
+
+    button:hover{
+        opacity: 0.8;
+    }
+    
+    button:active{
+        opacity: 0.8;
+    }
+
 `
 
 export default Header;

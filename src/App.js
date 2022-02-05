@@ -12,9 +12,9 @@ export default function App(){
         <BrowserRouter>
         <GlobalStyled/>
             <Routes>
-                <Route path = "/login" element = {<LoginPage/>}/>
+                <Route path = "/" element = {<LoginPage/>}/>
                 <Route path = "/signup" element = {<SignUpPage/>}/>
-                <Route path = "/" element = {<HomePage/>}/>
+                <Route path = "/home" element = {<HomePage/>}/>
                 <Route path = "/deposit" element = {<DepositPage />}/>
                 <Route path = "/retreat" element = {<RetreatPage />}/>
             </Routes>

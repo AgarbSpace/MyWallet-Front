@@ -16,7 +16,8 @@ export default function DepositPage(){
 
     const [depositForm, setDepositForm] = useState({
         value: "",
-        description: ""
+        description: "",
+        type: ""
     })
 
     const [buttonStatus, setButtonStatus] = useState("")
@@ -34,9 +35,9 @@ export default function DepositPage(){
         })
 
         promisse.then(response => {
-            alert("Deu certo");
+            alert("Depósito realizado com sucesso");
             setButtonStatus("")
-            navigate("/")
+            navigate("/home")
         })
 
         promisse.catch(error => {
@@ -61,7 +62,10 @@ export default function DepositPage(){
                 <Form onSubmit={deposit}>
                     <input type = "number" placeholder = "Valor" value = {depositForm.value} name = "value" onChange = {controlledInput}/>
                     <input type = "text" placeholder = "Descrição" value = {depositForm.description} name = "description" onChange = {controlledInput}/>
-                    <button type = "submit" onClick={() => setButtonStatus("atualizando")}>{buttonStatus === 'atualizando' ? <ThreeDots type="ThreeDots" color="#8C11BE" height={40} width={40} /> : "Salvar entrada"}</button>
+                    <button type = "submit" onClick={() => {
+                        setButtonStatus("atualizando")
+                        setDepositForm({...depositForm, type: "deposit"})
+                        }}>{buttonStatus === 'atualizando' ? <ThreeDots type="ThreeDots" color="#8C11BE" height={40} width={40} /> : "Salvar entrada"}</button>
                 </Form>
             </ContentContainer>
 

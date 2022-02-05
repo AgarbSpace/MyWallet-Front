@@ -34,9 +34,9 @@ export default function RetreatPage(){
         })
 
         promisse.then(response => {
-            alert("Deu certo");
+            alert("Retirada feita com sucesso");
             setButtonStatus("")
-            navigate("/")
+            navigate("/home")
         })
 
         promisse.catch(error => {
@@ -59,7 +59,10 @@ export default function RetreatPage(){
                 <Form onSubmit={retreat}>
                     <input type = "number" placeholder = "Valor" value = {retreatForm.value} name = "value" onChange = {controlledInput}/>
                     <input type = "text" placeholder = "Descrição" value = {retreatForm.description} name = "description" onChange = {controlledInput}/>
-                    <button type = "submit" onClick={() => setButtonStatus("atualizando")}>{buttonStatus === 'atualizando' ? <ThreeDots type="ThreeDots" color="#8C11BE" height={40} width={40} /> : "Salvar saída"}</button>
+                    <button type = "submit" onClick={() => {
+                        setButtonStatus("atualizando")
+                        setRetreatForm({...retreatForm, type: "retreat"})
+                    }}>{buttonStatus === 'atualizando' ? <ThreeDots type="ThreeDots" color="#8C11BE" height={40} width={40} /> : "Salvar saída"}</button>
                 </Form>
             </ContentContainer>
 
