@@ -30,7 +30,7 @@ export default function HomePage(){
 
     useEffect(async () =>{
 
-        const promisse = axios.get("http://localhost:5000/home", {
+        const promisse = axios.get("https://back-mywallet-project.herokuapp.com/home", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -45,7 +45,7 @@ export default function HomePage(){
 
     }, [])
 
-    if(!movimentation){
+    if(!movimentation || movimentation.length === 0){
         return(
             <Container>
                 <ContentContainer>

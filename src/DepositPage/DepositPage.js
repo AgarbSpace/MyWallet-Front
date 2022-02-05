@@ -25,7 +25,7 @@ export default function DepositPage(){
     function deposit(e){
         e.preventDefault()
 
-        const promisse = axios.post("http://localhost:5000/deposit",{
+        const promisse = axios.post("https://back-mywallet-project.herokuapp.com/deposit",{
             ...depositForm
         }, {
 

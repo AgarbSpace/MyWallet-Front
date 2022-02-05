@@ -22,8 +22,8 @@ export default function LoginPage(){
     function login(e){
         e.preventDefault()
 
-        const promisse = axios.post("http://localhost:5000/",{
-            ...loginForm
+        const promisse = axios.post("https://back-mywallet-project.herokuapp.com/",{
+            ...loginForm, email: loginForm.email.toLowerCase()
         })
 
         promisse.then(response => {
