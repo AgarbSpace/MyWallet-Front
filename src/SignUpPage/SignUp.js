@@ -52,7 +52,7 @@ export default function SignUpPage(){
                     <input type = "email" placeholder = "E-mail" value = {signUpForm.email} name = "email" onChange = {controlledInput}/>
                     <input type = "password" placeholder = "Senha" value = {signUpForm.password} name = "password" onChange= {controlledInput}/>
                     <input type = "password" placeholder = "Confirme a senha" value={signUpForm.passwordConfirmed} name = "passwordConfirmed" onChange={controlledInput}/>
-                    <button type = "submit" onClick={() => setButtonStatus("atualizando")}>{buttonStatus === 'atualizando' ? <ThreeDots type="ThreeDots" color="#8C11BE" height={40} width={40} /> : "Entrar"}</button>
+                    <button type = "submit" onClick={() => setButtonStatus("atualizando")}>{buttonStatus === 'atualizando' ? <ThreeDots type="ThreeDots" color="#8C11BE" height={40} width={40} /> : "Cadastrar"}</button>
                 </form>
                 <Link to = "/login">Já tem uma conta? Entre agora!</Link>
             </InitialPagesContainer>
