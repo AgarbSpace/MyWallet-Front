@@ -22,14 +22,14 @@ export default function SignUpPage(){
     function signUp(e){
         e.preventDefault()
 
-        const promisse = axios.post("http://localhost:5000/signUp",{
+        const promisse = axios.post("https://back-mywallet-project.herokuapp.com/signUp",{
             ...signUpForm
         })
 
         promisse.then(response => {
             alert("Cadastro realizado com sucesso!");
             setButtonStatus("")
-            navigate('/login')
+            navigate('/')
         })
 
         promisse.catch(error => {
