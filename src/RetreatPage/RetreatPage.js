@@ -24,7 +24,7 @@ export default function RetreatPage(){
     function retreat(e){
         e.preventDefault()
 
-        const promisse = axios.post("https://back-mywallet-project.herokuapp.com/deposit",{
+        const promisse = axios.post("https://back-mywallet-project.herokuapp.com/movimentation",{
             ...retreatForm
         }, {
 
