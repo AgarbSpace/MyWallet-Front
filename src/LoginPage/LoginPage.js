@@ -37,7 +37,7 @@ export default function LoginPage(){
         promisse.catch(error => {
             alert("Dados inválidos! Tente novamente");
             setButtonStatus("")
-            console.log(error.response);
+            console.log(error.response.data);
         })
     }
 
