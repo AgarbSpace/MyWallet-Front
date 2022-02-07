@@ -35,7 +35,7 @@ export default function SignUpPage(){
         promisse.catch(error => {
             alert("Dados inválidos! Tente novamente");
             setButtonStatus("")
-            console.log(error);
+            console.log(error.response);
         })
     }
 
