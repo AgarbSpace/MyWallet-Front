@@ -96,7 +96,7 @@ export default function HomePage(){
                                         <Day>{infos.day}</Day>
                                         <Description>{infos.description}</Description>
                                     </DayAndDescription>
-                                    {infos.type === 'deposit' ? <Value type = "deposit">{infos.value}</Value> : <Value>{infos.value}</Value>}
+                                    {infos.type === 'deposit' ? <Value type = "deposit">{parseFloat(infos.value).toFixed(2)}</Value> : <Value>{parseFloat(infos.value).toFixed(2)}</Value>}
                                 </Details>
                             )
                         })}
