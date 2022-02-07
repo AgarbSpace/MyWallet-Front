@@ -33,6 +33,19 @@ export default function SignUpPage(){
         })
 
         promisse.catch(error => {
+
+            if(error.rensponse.data === "E-mail em uso, tente outro."){
+                alert(error.response.data)
+                setButtonStatus("")
+                return;
+            }
+
+            if(error.rensponse.data === "As senhas não conferem! Tente novamente."){
+                alert(error.response.data)
+                setButtonStatus("")
+                return;
+            }
+
             alert("Dados inválidos! Tente novamente");
             setButtonStatus("")
             console.log(error.response.data);
