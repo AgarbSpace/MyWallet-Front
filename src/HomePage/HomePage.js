@@ -104,7 +104,7 @@ export default function HomePage(){
                     <FooterContent>
                         <Details>
                             <Balance>SALDO</Balance>
-                            <Debt debt = {balance}>{balance}</Debt>
+                            <Debt debt = {balance}>{parseFloat(balance).toFixed(2)}</Debt>
                         </Details>
                     </FooterContent>
                 </Content>

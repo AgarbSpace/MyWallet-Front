@@ -27,7 +27,6 @@ export default function LoginPage(){
         })
 
         promisse.then(response => {
-            alert("Login realizado com sucesso!");
             setButtonStatus("")
             setToken(response.data)
             localStorage.setItem('token', JSON.stringify(response.data));
