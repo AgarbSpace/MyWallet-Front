@@ -85,9 +85,9 @@ export default function HomePage(){
                         {movimentation.map((infos) =>{
 
                             if(infos.type === "deposit"){
-                                balance += parseInt(infos.value)
+                                balance += parseFloat(infos.value)
                             }else{
-                                balance -= parseInt(infos.value)
+                                balance -= parseFloat(infos.value)
                             }
 
                             return(
